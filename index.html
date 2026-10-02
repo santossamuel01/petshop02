@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pet Shop Amigo - Acessível</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- BARRA DE ACESSIBILIDADE FIXA -->
+  <aside class="barra-acessibilidade" role="region" aria-label="Ferramentas de Acessibilidade">
+    <div class="container">
+      <span id="label-acessibilidade">Acessibilidade:</span>
+      <button id="btn-aumentar" aria-label="Aumentar tamanho do texto">A +</button>
+      <button id="btn-diminuir" aria-label="Diminuir tamanho do texto">A -</button>
+      <button id="btn-contraste" aria-label="Alternar para modo de Alto Contraste">Alto Contraste</button>
+    </div>
+  </aside>
+
+  <!-- CABEÇALHO DA PÁGINA -->
+  <header class="cabecalho">
+    <div class="container">
+      <div class="logo">
+        <h1>🐶 Pet Shop Amigo</h1>
+      </div>
+      <nav aria-label="Navegação Principal">
+        <ul>
+          <li><a href="#servicos">Serviços</a></li>
+          <li><a href="#produtos">Produtos</a></li>
+          <li><a href="#contato">Contato</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- SEÇÃO DE APRESENTAÇÃO -->
+    <section class="hero">
+      <div class="container">
+        <h2>Cuidado carinhoso e silencioso para o seu pet</h2>
+        <p>Um ambiente calmo, preparado para atender todas as necessidades dos animais e de seus tutores.</p>
+      </div>
+    </section>
+
+    <!-- SEÇÃO DE SERVIÇOS -->
+    <section id="servicos" class="secao">
+      <div class="container">
+        <h2>Nossos Serviços</h2>
+        <div class="grid-cards">
+          
+          <article class="card">
+            <span class="icone" aria-hidden="true">✂️</span>
+            <h3>Banho e Tosa Calmo</h3>
+            <p>Atendimento sem barulho excessivo e com iluminação suave para não estressar o pet.</p>
+            <a href="#contato" class="btn-acao">Agendar Serviço</a>
+          </article>
+
+          <article class="card">
+            <span class="icone" aria-hidden="true">🩺</span>
+            <h3>Consulta Veterinária</h3>
+            <p>Consultas com médicos veterinários com comunicação clara e ambiente adaptado.</p>
+            <a href="#contato" class="btn-acao">Agendar Serviço</a>
+          </article>
+
+          <article class="card">
+            <span class="icone" aria-hidden="true">🏠</span>
+            <h3>Hotelzinho Sensorial</h3>
+            <p>Espaços tranquilos, organizados e sem ruídos bruscos para descanso.</p>
+            <a href="#contato" class="btn-acao">Agendar Serviço</a>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- SEÇÃO DE CONTATO / AGENDAMENTO -->
+    <section id="contato" class="secao bg-suave">
+      <div class="container">
+        <h2>Fale Conosco / Agendamento</h2>
+        <p>Preencha os campos abaixo. Não enviamos mensagens de áudio, respondemos tudo por texto.</p>
+        
+        <form class="formulario" onsubmit="alert('Mensagem enviada com sucesso!'); return false;">
+          <label for="nome">Seu Nome:</label>
+          <input type="text" id="nome" name="nome" required placeholder="Digite seu nome completo">
+
+          <label for="pet">Nome do seu Pet:</label>
+          <input type="text" id="pet" name="pet" required placeholder="Digite o nome do seu pet">
+
+          <label for="preferencia">Preferência de contato:</label>
+          <select id="preferencia" name="preferencia">
+            <option value="whatsapp">WhatsApp (Apenas Mensagem de Texto)</option>
+            <option value="email">E-mail</option>
+            <option value="sms">SMS</option>
+          </select>
+
+          <label for="mensagem">Como podemos ajudar?</label>
+          <textarea id="mensagem" name="mensagem" rows="4" placeholder="Escreva sua mensagem aqui..."></textarea>
+
+          <button type="submit" class="btn-enviar">Enviar Mensagem</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <!-- RODAPÉ -->
+  <footer class="rodape">
+    <div class="container">
+      <p>&copy; 2026 Pet Shop Amigo - Compromisso com a Acessibilidade e Inclusão.</p>
+    </div>
+  </footer>
+
+  <!-- WIDGET VLIBRAS (TRADUÇÃO PARA LÍNGUA BRASILEIRA DE SINAIS) -->
+  <div vw class="enabled">
+    <div vw-access-button class="active"></div>
+    <div vw-plugin-wrapper>
+      <div class="vw-plugin-top-wrapper"></div>
+    </div>
+  </div>
+  <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+  <script>
+    new window.VLibras.Widget('https://vlibras.gov.br/app');
+  </script>
+
+  <!-- SCRIPT PARA AUMENTAR FONTE E ALTO CONTRASTE -->
+  <script>
+    let tamanhoFonte = 100;
+
+    document.getElementById('btn-aumentar').addEventListener('click', () => {
+      if (tamanhoFonte < 150) {
+        tamanhoFonte += 10;
+        document.body.style.fontSize = tamanhoFonte + '%';
+      }
+    });
+
+    document.getElementById('btn-diminuir').addEventListener('click', () => {
+      if (tamanhoFonte > 80) {
+        tamanhoFonte -= 10;
+        document.body.style.fontSize = tamanhoFonte + '%';
+      }
+    });
+
+    document.getElementById('btn-contraste').addEventListener('click', () => {
+      document.body.classList.toggle('alto-contraste');
+    });
+  </script>
+
+</body>
+</html>
